@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horizon COMPASS — Public Involvement Software for PI Teams</title>
+<meta name="description" content="Horizon COMPASS is purpose-built stakeholder management software for public involvement teams. Track contacts, log interactions, manage commitments, and generate PI reports.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   HORIZON COMPASS — Landing Page
+   Easy edit guide:
+   - Brand colors: change --ink, --sky, --mist below
+   - Hero headline: look for <h1 class="hero-h1">
+   - Feature cards: look for <div class="feat-card">
+   - CTA email form: look for <div class="cta-band">
+   - Footer links: look for <footer>
+   ============================================================ */
+
+:root {
+  --ink:       #0D1B2A;   /* primary dark text */
+  --slate:     #3D5166;   /* secondary text */
+  --fog:       #7A8FA3;   /* muted text */
+  --rule:      #D8E3EC;   /* borders/dividers */
+  --surface:   #F4F8FB;   /* light bg panels */
+  --white:     #FFFFFF;
+  --sky:       #1A6FAE;   /* primary brand blue */
+  --sky-light: #E6F1FA;   /* blue tint bg */
+  --sky-mid:   #B8D6EF;   /* blue accent mid */
+  --amber:     #C47B0A;   /* warm accent */
+  --amber-bg:  #FDF3E1;
+  --radius:    6px;
+  --radius-lg: 12px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── TYPOGRAPHY ── */
+.serif { font-family: 'DM Serif Display', Georgia, serif; }
+
+h1, h2, h3 { font-weight: 400; line-height: 1.2; }
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sky);
+}
+
+/* ── LAYOUT ── */
+.container { max-width: 1040px; margin: 0 auto; padding: 0 2rem; }
+.section { padding: 5rem 0; }
+.section-sm { padding: 3.5rem 0; }
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-logomark {
+  width: 30px;
+  height: 30px;
+  background: var(--sky);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-logomark svg { width: 16px; height: 16px; fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.nav-brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.nav-product { font-size: 14px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+.nav-company { font-size: 10px; color: var(--fog); font-weight: 400; }
+
+.nav-cta {
+  background: var(--sky);
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.nav-cta:hover { background: #155d96; }
+
+/* ── HERO ── */
+.hero {
+  padding: 6rem 0 5rem;
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--sky-light);
+  color: var(--sky);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+}
+
+.hero-tag-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--sky);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero-h1 {
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-h1 em {
+  font-style: italic;
+  color: var(--sky);
+}
+
+.hero-sub {
+  font-size: 17px;
+  color: var(--slate);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 480px;
+}
+
+.hero-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 0.75rem;
+  max-width: 420px;
+}
+
+.hero-form input[type="email"] {
+  flex: 1;
+  height: 44px;
+  padding: 0 14px;
+  border: 1.5px solid var(--rule);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--ink);
+  background: var(--white);
+  transition: border-color 0.15s;
+  outline: none;
+}
+
+.hero-form input[type="email"]:focus { border-color: var(--sky); }
+.hero-form input[type="email"]::placeholder { color: var(--fog); }
+
+.btn-primary {
+  height: 44px;
+  padding: 0 20px;
+  background: var(--sky);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.btn-primary:hover { background: #155d96; }
+
+.hero-note { font-size: 12px; color: var(--fog); }
+
+/* Hero visual — app preview mockup */
+.hero-visual {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(13,27,42,0.08);
+}
+
+.app-bar {
+  background: #0D1B2A;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app-bar-dots { display: flex; gap: 5px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot-r { background: #E24B4A; }
+.dot-y { background: #EF9F27; }
+.dot-g { background: #639922; }
+
+.app-bar-title { font-size: 12px; color: rgba(255,255,255,0.5); flex: 1; text-align: center; }
+
+.app-body { padding: 16px; }
+
+.app-project-header {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-proj-name { font-size: 13px; font-weight: 600; color: var(--ink); }
+.app-proj-sub { font-size: 11px; color: var(--fog); margin-top: 1px; }
+
+.app-badge {
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.badge-active { background: #EAF3DE; color: #3B6D11; }
+.badge-amber  { background: var(--amber-bg); color: var(--amber); }
+.badge-blue   { background: var(--sky-light); color: var(--sky); }
+
+.app-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.app-stat {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.app-stat-num { font-size: 20px; font-weight: 600; color: var(--ink); line-height: 1; }
+.app-stat-lbl { font-size: 10px; color: var(--fog); margin-top: 3px; }
+
+.app-interactions { background: white; border: 1px solid var(--rule); border-radius: var(--radius); }
+.app-int-header { padding: 10px 14px; border-bottom: 1px solid var(--rule); font-size: 11px; font-weight: 600; color: var(--slate); text-transform: uppercase; letter-spacing: 0.06em; }
+
+.app-int-row {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.app-int-row:last-child { border-bottom: none; }
+
+.app-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.av-blue  { background: var(--sky-light); color: var(--sky); }
+.av-green { background: #EAF3DE; color: #3B6D11; }
+.av-amber { background: var(--amber-bg); color: var(--amber); }
+
+.app-int-name { font-size: 12px; font-weight: 500; color: var(--ink); }
+.app-int-note { font-size: 11px; color: var(--fog); margin-top: 1px; }
+.app-int-meta { font-size: 10px; color: var(--fog); margin-left: auto; white-space: nowrap; padding-top: 2px; }
+
+/* ── LOGOS / SOCIAL PROOF ── */
+.proof-band {
+  background: var(--surface);
+  border-bottom: 1px solid var(--rule);
+  padding: 1.75rem 0;
+  text-align: center;
+}
+
+.proof-label { font-size: 12px; color: var(--fog); margin-bottom: 1rem; letter-spacing: 0.04em; }
+
+.proof-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.proof-item { font-size: 13px; font-weight: 500; color: var(--slate); opacity: 0.7; }
+
+/* ── FEATURES ── */
+.features-intro {
+  max-width: 560px;
+  margin-bottom: 3rem;
+}
+
+.features-intro h2 {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.features-intro p { color: var(--slate); font-size: 16px; }
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.feat-card {
+  background: var(--white);
+  padding: 1.75rem 1.5rem;
+}
+
+.feat-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--sky-light);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.feat-icon svg { width: 20px; height: 20px; stroke: var(--sky); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+.feat-title { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 0.4rem; }
+.feat-desc { font-size: 13px; color: var(--slate); line-height: 1.6; }
+
+/* ── HOW IT WORKS ── */
+.how-section { background: var(--ink); color: white; }
+
+.how-inner { max-width: 1040px; margin: 0 auto; padding: 5rem 2rem; }
+
+.how-intro { max-width: 500px; margin-bottom: 3.5rem; }
+.how-intro .eyebrow { color: var(--sky-mid); }
+.how-intro h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); color: white; margin-top: 0.5rem; letter-spacing: -0.02em; }
+
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+
+.step-num {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--sky-mid);
+  margin-bottom: 0.75rem;
+}
+
+.step-title { font-size: 15px; font-weight: 600; color: white; margin-bottom: 0.5rem; }
+.step-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.65; }
+
+.step-connector {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+/* ── WHO IT'S FOR ── */
+.who-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.who-card {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+}
+
+.who-icon {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.who-title { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 0.4rem; }
+.who-desc { font-size: 13px; color: var(--slate); line-height: 1.6; }
+
+/* ── ACRONYM CALLOUT ── */
+.acronym-band {
+  background: var(--sky-light);
+  border-top: 1px solid var(--sky-mid);
+  border-bottom: 1px solid var(--sky-mid);
+  padding: 3rem 0;
+}
+
+.acronym-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  text-align: center;
+}
+
+.acronym-letter {
+  padding: 1rem 0.5rem;
+  border-right: 1px solid var(--sky-mid);
+}
+
+.acronym-letter:last-child { border-right: none; }
+
+.a-letter {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 2.5rem;
+  color: var(--sky);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.a-word { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; }
+.a-desc { font-size: 11px; color: var(--fog); }
+
+/* ── CTA BAND ── */
+.cta-band {
+  text-align: center;
+  padding: 6rem 2rem;
+  border-top: 1px solid var(--rule);
+}
+
+.cta-band h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  letter-spacing: -0.02em;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.cta-band p {
+  font-size: 16px;
+  color: var(--slate);
+  max-width: 480px;
+  margin: 0 auto 2rem;
+}
+
+.cta-form {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  max-width: 420px;
+  margin: 0 auto 0.75rem;
+}
+
+.cta-form input[type="email"] {
+  flex: 1;
+  height: 44px;
+  padding: 0 14px;
+  border: 1.5px solid var(--rule);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.cta-form input[type="email"]:focus { border-color: var(--sky); }
+.cta-form input[type="email"]::placeholder { color: var(--fog); }
+.cta-note { font-size: 12px; color: var(--fog); }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 2rem 0;
+}
+
+.footer-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-left { font-size: 12px; color: var(--fog); }
+.footer-right { display: flex; gap: 1.5rem; }
+.footer-right a { font-size: 12px; color: var(--fog); text-decoration: none; }
+.footer-right a:hover { color: var(--sky); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 800px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .features-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .who-grid { grid-template-columns: 1fr; }
+  .acronym-grid { grid-template-columns: repeat(3, 1fr); }
+  .acronym-grid .acronym-letter:nth-child(3) { border-right: none; }
+}
+
+@media (max-width: 540px) {
+  .hero-form, .cta-form { flex-direction: column; }
+  .steps { grid-template-columns: 1fr; }
+  .proof-list { gap: 1.25rem; }
+  .acronym-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── ACCESSIBILITY ── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-tag-dot { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 2px;
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAVIGATION ══════════════════════════════════════════════ -->
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="Horizon COMPASS home">
+      <div class="nav-logomark" aria-hidden="true">
+        <!-- Compass rose icon -->
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/>
+          <line x1="12" y1="3" x2="12" y2="7"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+          <line x1="3" y1="12" x2="7" y2="12"/>
+          <line x1="17" y1="12" x2="21" y2="12"/>
+          <circle cx="12" cy="12" r="2.5"/>
+        </svg>
+      </div>
+      <div class="nav-brand">
+        <span class="nav-product">Horizon COMPASS</span>
+        <span class="nav-company">Horizon Interaction Technologies</span>
+      </div>
+    </a>
+    <a href="#early-access" class="nav-cta">Request early access</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ════════════════════════════════════════════════════ -->
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="container">
+    <div class="hero-grid">
+
+      <!-- Left: copy -->
+      <div class="hero-left">
+        <div class="hero-tag" aria-label="Status: Early access open">
+          <span class="hero-tag-dot" aria-hidden="true"></span>
+          Early access now open
+        </div>
+
+        <!-- ★ EDIT: Main headline -->
+        <h1 class="hero-h1 serif" id="hero-heading">
+          Your PI workflow,<br><em>finally organized.</em>
+        </h1>
+
+        <!-- ★ EDIT: Hero subheadline -->
+        <p class="hero-sub">
+          Horizon COMPASS is purpose-built stakeholder management software for public involvement teams. Track contacts, log every interaction, manage commitments, and produce PI reports — without spreadsheets or generic CRMs.
+        </p>
+
+        <form class="hero-form" id="hero-form" onsubmit="handleSignup(event, 'hero-form')">
+          <input type="email" placeholder="your@email.com" required aria-label="Email address">
+          <button type="submit" class="btn-primary">Request access</button>
+        </form>
+        <p class="hero-note">No commitment. We'll reach out when early access opens.</p>
+      </div>
+
+      <!-- Right: app preview -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="app-bar">
+          <div class="app-bar-dots">
+            <div class="dot dot-r"></div>
+            <div class="dot dot-y"></div>
+            <div class="dot dot-g"></div>
+          </div>
+          <div class="app-bar-title">Horizon COMPASS — Project Dashboard</div>
+        </div>
+        <div class="app-body">
+          <div class="app-project-header">
+            <div>
+              <div class="app-proj-name">SR-189 Widening — Phase 2</div>
+              <div class="app-proj-sub">Sunrise Engineering · PI Lead: J. Putzke</div>
+            </div>
+            <span class="app-badge badge-active">Active</span>
+          </div>
+          <div class="app-stats">
+            <div class="app-stat">
+              <div class="app-stat-num">47</div>
+              <div class="app-stat-lbl">Stakeholders</div>
+            </div>
+            <div class="app-stat">
+              <div class="app-stat-num">183</div>
+              <div class="app-stat-lbl">Interactions</div>
+            </div>
+            <div class="app-stat">
+              <div class="app-stat-num" style="color: var(--amber);">6</div>
+              <div class="app-stat-lbl">Open items</div>
+            </div>
+          </div>
+          <div class="app-interactions">
+            <div class="app-int-header">Recent interactions</div>
+            <div class="app-int-row">
+              <div class="app-avatar av-blue">DH</div>
+              <div>
+                <div class="app-int-name">Darren Hess — Weber Basin WCD</div>
+                <div class="app-int-note">Phone call · Reviewed drawdown timeline</div>
+              </div>
+              <div class="app-int-meta">Today</div>
+            </div>
+            <div class="app-int-row">
+              <div class="app-avatar av-green">LC</div>
+              <div>
+                <div class="app-int-name">Loyal Clark — US Forest Service</div>
+                <div class="app-int-note">Email · ROW access coordination follow-up</div>
+              </div>
+              <div class="app-int-meta">Yesterday</div>
+            </div>
+            <div class="app-int-row">
+              <div class="app-avatar av-amber">JH</div>
+              <div>
+                <div class="app-int-name">Jeff Humphrey — Pineview Water</div>
+                <div class="app-int-note">Field visit · Reservoir level inspection</div>
+              </div>
+              <div class="app-int-meta">Jun 19</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOCIAL PROOF BAND ════════════════════════════════════════ -->
+<!-- ★ EDIT: Update these agency names as you gain real clients/pilots -->
+<div class="proof-band" aria-label="Built for teams working with">
+  <div class="container">
+    <p class="proof-label">Built for teams working with</p>
+    <div class="proof-list">
+      <span class="proof-item">State DOTs</span>
+      <span class="proof-item">Municipal utilities</span>
+      <span class="proof-item">FHWA-funded projects</span>
+      <span class="proof-item">Water infrastructure</span>
+      <span class="proof-item">Transportation corridors</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ACRONYM CALLOUT ══════════════════════════════════════════ -->
+<div class="acronym-band" aria-label="COMPASS stands for Community Outreach Management, Planning and Stakeholder Suite">
+  <div class="container">
+    <div class="acronym-grid" style="grid-template-columns: repeat(7,1fr)">
+      <div class="acronym-letter">
+        <div class="a-letter">C</div>
+        <div class="a-word">Community</div>
+      </div>
+      <div class="acronym-letter">
+        <div class="a-letter">O</div>
+        <div class="a-word">Outreach</div>
+      </div>
+      <div class="acronym-letter">
+        <div class="a-letter">M</div>
+        <div class="a-word">Management</div>
+      </div>
+      <div class="acronym-letter">
+        <div class="a-letter">P</div>
+        <div class="a-word">Planning</div>
+      </div>
+      <div class="acronym-letter">
+        <div class="a-letter">A</div>
+        <div class="a-word">And</div>
+      </div>
+      <div class="acronym-letter">
+        <div class="a-letter">S</div>
+        <div class="a-word">Stakeholder</div>
+      </div>
+      <div class="acronym-letter">
+        <div class="a-letter">S</div>
+        <div class="a-word">Suite</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FEATURES ═════════════════════════════════════════════════ -->
+<section class="section" aria-labelledby="features-heading">
+  <div class="container">
+    <div class="features-intro">
+      <p class="eyebrow">Features</p>
+      <!-- ★ EDIT: Features section headline -->
+      <h2 id="features-heading" class="serif">Every tool your PI team uses, in one place</h2>
+      <p>Built by a public involvement professional, for public involvement professionals. No generic CRM workarounds — just the workflow you already know, properly supported.</p>
+    </div>
+
+    <!-- ★ EDIT: Feature cards — update titles and descriptions as product evolves -->
+    <div class="features-grid" role="list">
+
+      <div class="feat-card" role="listitem">
+        <div class="feat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="feat-title">Stakeholder registry</h3>
+        <p class="feat-desc">A master contact list across all your projects. Link stakeholders to projects, assign roles and influence tiers, and carry engagement history forward automatically.</p>
+      </div>
+
+      <div class="feat-card" role="listitem">
+        <div class="feat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3 class="feat-title">Interaction logging</h3>
+        <p class="feat-desc">Log every phone call, email, field visit, and meeting. Track channel, sentiment, and who logged it — from the office or from the field on your phone.</p>
+      </div>
+
+      <div class="feat-card" role="listitem">
+        <div class="feat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3 class="feat-title">Commitments tracker</h3>
+        <p class="feat-desc">Every commitment your team makes gets logged, assigned, and tracked to resolution. Nothing falls through the cracks when the project runs long.</p>
+      </div>
+
+      <div class="feat-card" role="listitem">
+        <div class="feat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3 class="feat-title">PI report generation</h3>
+        <p class="feat-desc">Generate branded Word documents — PI reports, issues summaries, and stakeholder matrices — from your live data. What used to take half a day takes minutes.</p>
+      </div>
+
+      <div class="feat-card" role="listitem">
+        <div class="feat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <h3 class="feat-title">Mobile field app</h3>
+        <p class="feat-desc">Your field team logs contacts and interactions on any phone — no app install required. Everything syncs instantly with the desktop registry.</p>
+      </div>
+
+      <div class="feat-card" role="listitem">
+        <div class="feat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3 class="feat-title">Project dashboard</h3>
+        <p class="feat-desc">At-a-glance project health: engagement pace, open commitments, sentiment trends, deliverable status, and stakeholder engagement matrix — all in one view.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ═════════════════════════════════════════════ -->
+<section class="how-section" aria-labelledby="how-heading">
+  <div class="how-inner">
+    <div class="how-intro">
+      <p class="eyebrow">How it works</p>
+      <!-- ★ EDIT: How it works headline -->
+      <h2 id="how-heading" class="serif">From first contact to final report</h2>
+    </div>
+
+    <!-- ★ EDIT: Process steps — update as workflow changes -->
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3 class="step-title">Set up your project</h3>
+        <p class="step-desc">Add your project, import your existing contact list, and link stakeholders in minutes. Duplicate detection keeps your registry clean from day one.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Log every interaction</h3>
+        <p class="step-desc">Desktop or mobile — your team logs calls, emails, and field contacts as they happen. Every interaction is tied to a stakeholder, a project, and a date.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Track issues and commitments</h3>
+        <p class="step-desc">When a concern is raised or a commitment made, log it instantly. Assign follow-up, set categories, and track resolution without losing context.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3 class="step-title">Generate your PI report</h3>
+        <p class="step-desc">At any point, generate a fully formatted report — narrative sections, interaction logs, commitment status, and stakeholder matrix — ready to submit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHO IT'S FOR ═════════════════════════════════════════════ -->
+<section class="section" aria-labelledby="who-heading">
+  <div class="container">
+    <p class="eyebrow">Who it's for</p>
+    <!-- ★ EDIT: Who it's for headline -->
+    <h2 id="who-heading" class="serif" style="font-size: clamp(1.6rem, 3vw, 2.1rem); margin: 0.5rem 0 0.75rem; letter-spacing: -0.02em;">Made for small PI teams doing real infrastructure work</h2>
+    <p style="color: var(--slate); max-width: 560px;">Horizon COMPASS is designed for firms that manage public involvement for transportation, utility, and municipal projects — and need a tool that speaks their language.</p>
+
+    <!-- ★ EDIT: Target audience cards -->
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-icon" aria-hidden="true">🏢</div>
+        <h3 class="who-title">Small PI firms</h3>
+        <p class="who-desc">2–10 person teams who need a shared system without the overhead or cost of enterprise CRM software. Built for the way small PI teams actually work.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon" aria-hidden="true">🏗️</div>
+        <h3 class="who-title">Civil engineering subconsultants</h3>
+        <p class="who-desc">PI teams embedded in or subcontracting to larger engineering firms on UDOT, FHWA-funded, or municipal infrastructure projects.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon" aria-hidden="true">🏛️</div>
+        <h3 class="who-title">Transportation agencies</h3>
+        <p class="who-desc">DOT project offices and corridor teams who need consistent stakeholder documentation and reporting across multiple active projects.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EARLY ACCESS CTA ═════════════════════════════════════════ -->
+<section class="cta-band" id="early-access" aria-labelledby="cta-heading">
+  <p class="eyebrow">Early access</p>
+  <!-- ★ EDIT: CTA section headline and supporting copy -->
+  <h2 id="cta-heading" class="serif">Be among the first to use it</h2>
+  <p>Horizon COMPASS is in active development. Early access users will shape the product — and receive founding member pricing when we launch.</p>
+
+  <form class="cta-form" id="cta-form" onsubmit="handleSignup(event, 'cta-form')">
+    <input type="email" placeholder="your@email.com" required aria-label="Email address">
+    <button type="submit" class="btn-primary">Request access</button>
+  </form>
+  <p class="cta-note">No commitment. We'll reach out when early access opens.</p>
+</section>
+
+<!-- ══ FOOTER ═══════════════════════════════════════════════════ -->
+<!-- ★ EDIT: Footer links and company info -->
+<footer>
+  <div class="footer-inner">
+    <p class="footer-left">© 2026 Horizon Interaction Technologies · Horizon COMPASS</p>
+    <nav class="footer-right" aria-label="Footer links">
+      <a href="mailto:info@horizoninteraction.com">Contact</a>
+      <a href="#">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   FORM HANDLER
+   Replace the alert() below with your actual email capture
+   service (Formspree, Mailchimp, etc.) when ready.
+   ============================================================ */
+function handleSignup(e, formId) {
+  e.preventDefault();
+  const form = document.getElementById(formId);
+  const email = form.querySelector('input[type="email"]').value;
+
+  /* ★ EDIT: Replace this block with your email capture service */
+  /* Example Formspree:
+     fetch('https://formspree.io/f/YOUR_FORM_ID', {
+       method: 'POST',
+       headers: { 'Content-Type': 'application/json' },
+       body: JSON.stringify({ email })
+     });
+  */
+
+  /* Placeholder confirmation */
+  const btn = form.querySelector('button');
+  btn.textContent = '✓ You\'re on the list';
+  btn.style.background = '#3B6D11';
+  btn.disabled = true;
+  form.querySelector('input').disabled = true;
+}
+</script>
+
+</body>
+</html>
