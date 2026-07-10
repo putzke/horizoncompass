@@ -436,7 +436,7 @@ nav {
 /* ── WHO IT'S FOR ── */
 .who-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   margin-top: 2.5rem;
 }
@@ -685,12 +685,12 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
         <!-- ★ EDIT: Main headline -->
         <h1 class="hero-h1 serif" id="hero-heading">
-          Your PI workflow,<br><em>finally organized.</em>
+          The PI platform built<br><em>for FHWA compliance.</em>
         </h1>
 
         <!-- ★ EDIT: Hero subheadline -->
         <p class="hero-sub">
-          Horizon COMPASS is purpose-built stakeholder management software for public involvement teams. Track contacts, log every interaction, manage commitments, and produce PI reports — without spreadsheets or generic CRMs.
+          Horizon COMPASS is the only stakeholder management platform purpose-built for U.S. transportation PI teams. NEPA stage tracking, Title VI/EJ documentation, tribal consultation, AI report drafting, and a complete PI workflow — without spreadsheets, generic CRMs, or enterprise procurement cycles.
         </p>
 
         <form class="hero-form" id="hero-form" onsubmit="handleSignup(event, 'hero-form')">
@@ -823,7 +823,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
     <div class="features-intro">
       <p class="eyebrow">Features</p>
       <!-- ★ EDIT: Features section headline -->
-      <h2 id="features-heading" class="serif">The only PI platform built for FHWA and NEPA compliance — from first contact to final report</h2>
+      <h2 id="features-heading" class="serif">The only PI platform built for FHWA and NEPA compliance — from first stakeholder contact to AI-drafted report</h2>
       <p>Built by a public involvement professional, for public involvement professionals. No generic CRM workarounds — just the workflow you already know, properly supported.</p>
     </div>
 
@@ -934,7 +934,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
     <div class="how-intro">
       <p class="eyebrow">How it works</p>
       <!-- ★ EDIT: How it works headline -->
-      <h2 id="how-heading" class="serif">From first contact to final report</h2>
+      <h2 id="how-heading" class="serif">From first contact to FHWA-ready report</h2>
     </div>
 
     <!-- ★ EDIT: Process steps — update as workflow changes -->
@@ -942,22 +942,27 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
       <div class="step">
         <div class="step-num">01</div>
         <h3 class="step-title">Set up your project</h3>
-        <p class="step-desc">Add your project, import your existing contact list, and link stakeholders in minutes. Duplicate detection keeps your registry clean from day one.</p>
+        <p class="step-desc">Create a project, set the NEPA classification (CE / EA / EIS), and import your contact roster in minutes. Duplicate detection and auto-assigned report distribution groups keep your registry clean from day one.</p>
       </div>
       <div class="step">
         <div class="step-num">02</div>
-        <h3 class="step-title">Log every interaction</h3>
-        <p class="step-desc">Desktop or mobile — your team logs calls, emails, and field contacts as they happen. Every interaction is tied to a stakeholder, a project, and a date.</p>
+        <h3 class="step-title">Log every interaction — with NEPA context</h3>
+        <p class="step-desc">Desktop or mobile — your team logs calls, emails, meetings, and field contacts as they happen. Every interaction is tagged to a NEPA process stage, a stakeholder, and a project. LEP and Environmental Justice flags are built into every contact record.</p>
       </div>
       <div class="step">
         <div class="step-num">03</div>
-        <h3 class="step-title">Track issues and commitments</h3>
-        <p class="step-desc">When a concern is raised or a commitment made, log it instantly. Assign follow-up, set categories, and track resolution without losing context.</p>
+        <h3 class="step-title">Track compliance, issues, and commitments</h3>
+        <p class="step-desc">Log public comments with comment periods and response tracking. Monitor tribal consultation deadlines. Record commitments across 15+ categories. Flag concerns as issues and track them to resolution — all in one place.</p>
       </div>
       <div class="step">
         <div class="step-num">04</div>
-        <h3 class="step-title">Generate your PI report</h3>
-        <p class="step-desc">At any point, generate a fully formatted report — narrative sections, interaction logs, commitment status, and stakeholder matrix — ready to submit.</p>
+        <h3 class="step-title">Draft your report with AI</h3>
+        <p class="step-desc">Open the PI Report Editor and let AI draft your narrative sections from logged data — concerns, outreach summary, NEPA compliance status, trends. Review, edit, and refine. Export a branded Word document ready to submit.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <h3 class="step-title">Keep your client informed</h3>
+        <p class="step-desc">Archive reports, track deliverable progress, and generate compliance summaries your DOT or municipal client can access. The PI Client Portal (coming soon) gives client contacts a read-only live view of engagement activity on their project — no more waiting for the quarterly PDF.</p>
       </div>
     </div>
   </div>
@@ -975,18 +980,23 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
     <div class="who-grid">
       <div class="who-card">
         <div class="who-icon" aria-hidden="true">🏢</div>
-        <h3 class="who-title">Small PI firms</h3>
-        <p class="who-desc">2–10 person teams who need a shared system without the overhead or cost of enterprise CRM software. Built for the way small PI teams actually work.</p>
+        <h3 class="who-title">Small PI consulting firms</h3>
+        <p class="who-desc">2–10 person teams who need a shared system without the overhead or cost of enterprise CRM software. Built for the way small PI teams actually work — fast to adopt, no IT procurement cycle required.</p>
       </div>
       <div class="who-card">
         <div class="who-icon" aria-hidden="true">🏗️</div>
         <h3 class="who-title">Civil engineering subconsultants</h3>
-        <p class="who-desc">PI teams embedded in or subcontracting to larger engineering firms on UDOT, FHWA-funded, or municipal infrastructure projects.</p>
+        <p class="who-desc">PI teams embedded in or subcontracting to larger engineering firms on UDOT, FHWA-funded, or municipal infrastructure projects. Every workflow is already shaped around NEPA requirements and UDOT activity codes.</p>
       </div>
       <div class="who-card">
         <div class="who-icon" aria-hidden="true">🏛️</div>
-        <h3 class="who-title">Transportation agencies</h3>
-        <p class="who-desc">DOT project offices and corridor teams who need consistent stakeholder documentation and reporting across multiple active projects.</p>
+        <h3 class="who-title">State DOT project offices</h3>
+        <p class="who-desc">Region teams and corridor project offices who need consistent stakeholder documentation and FHWA-compliant PI reporting across multiple active projects — complementary to existing agency engagement tools.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon" aria-hidden="true">🏙️</div>
+        <h3 class="who-title">Municipal &amp; county clients</h3>
+        <p class="who-desc">City and county engineering and public works leadership who want live visibility into public engagement progress on their projects — without waiting for a periodic report. The PI Client Portal (coming soon) gives clients a read-only window into their project's activity in real time.</p>
       </div>
     </div>
   </div>
