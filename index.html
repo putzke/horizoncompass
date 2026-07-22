@@ -641,6 +641,35 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
   opacity: 0.82;
   border-style: dashed;
 }
+/* Highlighted / flagship feature card */
+.feat-card--highlight {
+  border: 2px solid var(--sky);
+  background: linear-gradient(135deg, rgba(26,111,174,0.10) 0%, rgba(26,111,174,0.04) 100%);
+  position: relative;
+}
+.feat-card--highlight::before {
+  content: '★ KEY DIFFERENTIATOR';
+  position: absolute;
+  top: -10px;
+  left: 16px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--sky);
+  background: var(--surface);
+  padding: 0 6px;
+}
+/* Highlighted step */
+.step--highlight {
+  border: 2px solid var(--sky);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, rgba(26,111,174,0.08) 0%, transparent 100%);
+  grid-column: 1 / -1;
+}
+.step--highlight .step-num {
+  color: var(--sky);
+}
 .feat-badge {
   font-size: 10px;
   background: var(--sky);
@@ -652,6 +681,14 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
   font-weight: 600;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+}
+.feat-badge--new {
+  background: var(--sky);
+  animation: pulse-badge 2s ease-in-out infinite;
+}
+@keyframes pulse-badge {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
 </style>
 </head>
@@ -665,6 +702,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
       <a href="#features" class="nav-link">Features</a>
       <a href="#how-it-works" class="nav-link">How it works</a>
       <a href="#who-its-for" class="nav-link">Who it's for</a>
+      <a href="#client-portal" class="nav-link">Client Portal</a>
       <a href="#founder" class="nav-link">Meet the founder</a>
     </div>
     <a href="#early-access" class="nav-cta">Request early access</a>
@@ -690,7 +728,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
         <!-- ★ EDIT: Hero subheadline -->
         <p class="hero-sub">
-          Horizon COMPASS is the only stakeholder management platform purpose-built for U.S. transportation PI teams. NEPA stage tracking, Title VI/EJ documentation, tribal consultation, AI report drafting, and a complete PI workflow — without spreadsheets, generic CRMs, or enterprise procurement cycles.
+          Horizon COMPASS is the only stakeholder management platform purpose-built for U.S. transportation PI teams — with a live PI Client Portal that gives your DOT or municipal client real-time visibility into engagement activity on their project. NEPA compliance, AI report drafting, and a complete PI workflow, without spreadsheets or enterprise procurement cycles.
         </p>
 
         <form class="hero-form" id="hero-form" onsubmit="handleSignup(event, 'hero-form')">
@@ -938,9 +976,86 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
         <p class="feat-desc">Project phone hotline voicemails automatically transcribed and logged as interaction records — with stakeholder matching, subject tagging, and follow-up flagging. No more manual transcription from the construction hotline.</p>
       </div>
 
+      <div class="feat-card feat-card--highlight" role="listitem">
+        <div class="feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h3 class="feat-title">PI Client Portal <span class="feat-badge feat-badge--new">New</span></h3>
+        <p class="feat-desc">Give your DOT or municipal client a secure, read-only live view of public engagement activity and deliverable progress on their project — scoped to their project only. The transparency layer no other PI tool offers.</p>
+      </div>
+
 </div>
   </div>
 </section>══════════════════════════════════════════ -->
+
+<!-- ══ PI CLIENT PORTAL SPOTLIGHT ══════════════════════════════════ -->
+<section class="section" id="client-portal" aria-labelledby="portal-heading" style="background:var(--sky-light);border-top:1px solid var(--sky-mid);border-bottom:1px solid var(--sky-mid)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
+      <div>
+        <p class="eyebrow">Key differentiator</p>
+        <h2 id="portal-heading" class="serif" style="font-size:clamp(1.6rem,3vw,2.2rem);margin:0.5rem 0 1rem;letter-spacing:-0.02em;color:var(--ink)">The only PI platform that keeps your client in the loop — in real time</h2>
+        <p style="color:var(--slate);font-size:16px;line-height:1.7;margin-bottom:1.25rem">Every other PI stakeholder tool talks either to the public or to the PI team. Horizon COMPASS does something no competitor offers: a live <strong>PI Client Portal</strong> that gives your DOT, city, or county client a secure, read-only window into engagement activity and deliverable progress on their specific project — updated as your team works, not when you get around to writing the quarterly PDF.</p>
+        <p style="color:var(--slate);font-size:16px;line-height:1.7;margin-bottom:1.5rem">This is especially valuable during construction, when physical impacts are at their greatest and client leadership most needs visibility — without burdening your team with extra reporting cycles.</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.75rem">
+          <li style="display:flex;align-items:flex-start;gap:0.75rem">
+            <span style="color:var(--sky);font-weight:700;font-size:16px;flex-shrink:0">✓</span>
+            <span style="color:var(--slate);font-size:15px">Scoped to each client's project only — Logan City sees only Logan City</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:0.75rem">
+            <span style="color:var(--sky);font-weight:700;font-size:16px;flex-shrink:0">✓</span>
+            <span style="color:var(--slate);font-size:15px">Engagement activity summary, deliverable progress, outreach events, and issue status — curated for client visibility</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:0.75rem">
+            <span style="color:var(--sky);font-weight:700;font-size:16px;flex-shrink:0">✓</span>
+            <span style="color:var(--slate);font-size:15px">Internal team notes, raw interaction logs, and sentiment data stay private — your workflow remains yours</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:0.75rem">
+            <span style="color:var(--sky);font-weight:700;font-size:16px;flex-shrink:0">✓</span>
+            <span style="color:var(--slate);font-size:15px">Strengthens FHWA compliance story — continuous documentation visible to the client, not just at report time</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:0.75rem">
+            <span style="color:var(--sky);font-weight:700;font-size:16px;flex-shrink:0">✓</span>
+            <span style="color:var(--slate);font-size:15px">No other stakeholder management tool — not PublicInput, Simply Stakeholders, Tractivity, or Borealis — offers this</span>
+          </li>
+        </ul>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--sky-mid);border-radius:12px;padding:2rem;box-shadow:0 4px 24px rgba(26,111,174,0.10)">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:var(--sky);margin-bottom:1rem">Client view — Logan City Engineering</div>
+        <div style="background:var(--surface);border-radius:8px;padding:1rem;margin-bottom:0.75rem">
+          <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:0.25rem">200 East Roadway Widening</div>
+          <div style="font-size:12px;color:var(--fog)">Project #15905  ·  Active — Construction phase</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-bottom:0.75rem">
+          <div style="background:var(--surface);border-radius:6px;padding:0.75rem;text-align:center">
+            <div style="font-size:22px;font-weight:700;color:var(--ink)">44</div>
+            <div style="font-size:10px;color:var(--fog);margin-top:2px">Stakeholders</div>
+          </div>
+          <div style="background:var(--surface);border-radius:6px;padding:0.75rem;text-align:center">
+            <div style="font-size:22px;font-weight:700;color:var(--ink)">183</div>
+            <div style="font-size:10px;color:var(--fog);margin-top:2px">Interactions</div>
+          </div>
+          <div style="background:var(--surface);border-radius:6px;padding:0.75rem;text-align:center">
+            <div style="font-size:22px;font-weight:700;color:var(--sky)">2</div>
+            <div style="font-size:10px;color:var(--fog);margin-top:2px">Open issues</div>
+          </div>
+        </div>
+        <div style="background:var(--surface);border-radius:8px;padding:0.75rem;margin-bottom:0.5rem">
+          <div style="font-size:10px;font-weight:600;color:var(--slate);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.5rem">Deliverable progress</div>
+          <div style="font-size:12px;color:var(--ink);margin-bottom:4px">Public Participation Plan <span style="float:right;color:var(--sky);font-weight:600">✓ Complete</span></div>
+          <div style="font-size:12px;color:var(--ink);margin-bottom:4px">Stakeholder Registry <span style="float:right;color:var(--sky);font-weight:600">✓ Complete</span></div>
+          <div style="font-size:12px;color:var(--ink)">Weekly PI Report #34 <span style="float:right;color:var(--amber);font-weight:600">In progress</span></div>
+        </div>
+        <div style="background:var(--surface);border-radius:8px;padding:0.75rem">
+          <div style="font-size:10px;font-weight:600;color:var(--slate);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.5rem">Recent outreach</div>
+          <div style="font-size:12px;color:var(--slate);margin-bottom:3px">· Public open house — 47 attendees — Jul 15</div>
+          <div style="font-size:12px;color:var(--slate);margin-bottom:3px">· Newsletter distributed — 312 recipients — Jul 12</div>
+          <div style="font-size:12px;color:var(--slate)">· Agency coordination call — UDOT Region 1 — Jul 10</div>
+        </div>
+        <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--rule);font-size:11px;color:var(--fog);text-align:center">Read-only client view · Internal team notes not visible</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="how-section" id="how-it-works" aria-labelledby="how-heading">
   <div class="how-inner">
     <div class="how-intro">
@@ -971,10 +1086,10 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
         <h3 class="step-title">Draft your report with AI</h3>
         <p class="step-desc">Open the PI Report Editor and let AI draft your narrative sections from logged data — concerns, outreach summary, NEPA compliance status, trends. Review, edit, and refine. Export a branded Word document ready to submit.</p>
       </div>
-      <div class="step">
+      <div class="step step--highlight">
         <div class="step-num">05</div>
-        <h3 class="step-title">Keep your client informed</h3>
-        <p class="step-desc">Archive reports, track deliverable progress, and generate compliance summaries your DOT or municipal client can access. The PI Client Portal (coming soon) gives client contacts a read-only live view of engagement activity on their project — no more waiting for the quarterly PDF.</p>
+        <h3 class="step-title">Give your client a live window — not a quarterly PDF</h3>
+        <p class="step-desc">The PI Client Portal gives your DOT, city, or county client a secure, read-only view of public engagement activity and deliverable progress on their specific project — updated in real time as your team logs work. No other PI platform offers this. Your client sees what they need; your internal workflow stays private.</p>
       </div>
     </div>
   </div>
@@ -1008,7 +1123,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
       <div class="who-card">
         <div class="who-icon" aria-hidden="true">🏙️</div>
         <h3 class="who-title">Municipal &amp; county clients</h3>
-        <p class="who-desc">City and county engineering and public works leadership who want live visibility into public engagement progress on their projects — without waiting for a periodic report. The PI Client Portal (coming soon) gives clients a read-only window into their project's activity in real time.</p>
+        <p class="who-desc">City and county engineering and public works leadership who want live visibility into public engagement progress on their projects — without waiting for a periodic report. The PI Client Portal gives clients a secure, read-only window into their project's engagement activity, deliverables, and outreach — updated in real time.</p>
       </div>
     </div>
   </div>
